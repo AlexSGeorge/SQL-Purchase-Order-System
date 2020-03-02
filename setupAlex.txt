@@ -1,0 +1,623 @@
+SQL> 
+SQL>  /* Drop Tables */
+SQL> 
+SQL> drop table Orders;
+drop table Orders
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> 
+SQL> drop table unitprice;
+drop table unitprice
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> 
+SQL> drop table products;
+drop table products
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> 
+SQL> drop table suppliers;
+drop table suppliers
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> 
+SQL> drop table counter;
+drop table counter
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> 
+SQL>  /* Create Tables */
+SQL> 
+SQL> create table suppliers (
+  2  	     snum varchar2(2),
+  3  	     sname varchar2(20),
+  4  	     sadress varchar2(15),
+  5  	     scity varchar2(15),
+  6  	     sstate varchar2(15),
+  7  	     szip char(5),
+  8  	     sphone char(10),
+  9  	     primary key (snum));
+
+Table created.
+
+SQL> 
+SQL> create table products (
+  2  	     pnum varchar2(2),
+  3  	     pname varchar2(20),
+  4  	     pqty varchar2(5),
+  5  	     primary key (pnum));
+
+Table created.
+
+SQL> 
+SQL> create table unitprice (
+  2  	     snum varchar2(2),
+  3  	     pnum varchar2(2),
+  4  	     unitprice number(6,2),
+  5  	     amountdue varchar2(5),
+  6  	     torder varchar2(5),
+  7  	     primary key (snum,pnum),
+  8  	     constraint suppliersfk foreign key (snum) references suppliers(snum),
+  9  	     constraint productsfk1 foreign key (pnum) references products(pnum));
+
+Table created.
+
+SQL> 
+SQL> create table orders (
+  2  	     onum varchar2(10),
+  3  	     odate date,
+  4  	     ostatus varchar2(6),
+  5  	     pnum varchar2(2),
+  6  	     snum varchar2(2),
+  7  	     oqty number(6,2),
+  8  	     unitprice number(6,2),
+  9  	     oamount varchar2(15),
+ 10  	     sdate date,
+ 11  	     sqty varchar2(5),
+ 12  	     rqty varchar2(5),
+ 13  	     samount varchar2(15),
+ 14  	     primary key (onum),
+ 15  	     constraint suppliersfk2 foreign key (snum) references suppliers(snum),
+ 16  	     constraint productsk foreign key (pnum) references products(pnum));
+
+Table created.
+
+SQL> 
+SQL> create table counter (
+  2  	     maxNum number(4));
+
+Table created.
+
+SQL> 
+SQL> insert into counter values (1000);
+
+1 row created.
+
+SQL> 
+SQL> 
+SQL> commit;
+
+Commit complete.
+
+SQL> 
+SQL> 
+SQL>  /* Insert Suppliers Values */
+SQL> 
+SQL> insert into suppliers values ('S1','Staples','123 Main st.','San Jose','CA','95070','4088210001');
+
+1 row created.
+
+SQL> 
+SQL> insert into suppliers values ('S2','Office Depo','120 Union dr.','Campbell','CA','98003','4088210002');
+
+1 row created.
+
+SQL> 
+SQL> insert into suppliers values ('S3','Dunder-Mifflin','223 Polard ave.','Los Gatos','CA','98051','4088210003');
+
+1 row created.
+
+SQL> 
+SQL> insert into suppliers values ('S4','PaperCo','13500 Quito rd.','Saratoga','CA','95070','4088210004');
+
+1 row created.
+
+SQL> 
+SQL> insert into suppliers values ('S5','Office Supplies','100 Beach dr.','Santa Cruz','CA','90002','4088210005');
+
+1 row created.
+
+SQL> 
+SQL> insert into suppliers values ('S6','BuyLarge','560 West dr.','Morgan Hill','CA','98002','4088210006');
+
+1 row created.
+
+SQL> 
+SQL>  /* Insert Product Values */
+SQL> 
+SQL> insert into products values ('P1','Paper','10');
+
+1 row created.
+
+SQL> 
+SQL> insert into products values ('P2','Pen','10');
+
+1 row created.
+
+SQL> 
+SQL> insert into products values ('P3','tape','10');
+
+1 row created.
+
+SQL> 
+SQL> insert into products values ('P4','folder','10');
+
+1 row created.
+
+SQL> 
+SQL> insert into products values ('P5','pencil','10');
+
+1 row created.
+
+SQL> 
+SQL> insert into products values ('P6','staples','10');
+
+1 row created.
+
+SQL> 
+SQL>  /* UnitPrice Values */
+SQL> 
+SQL> 
+SQL> 	     /* Suppliers1 */
+SQL> 
+SQL> insert into unitprice values ('S1','P1','1.0', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S1','P2','2.0', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S1','P3','3.0', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S1','P4','4.0', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S1','P5','5.0', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S1','P6','6.0', null, null);
+
+1 row created.
+
+SQL> 
+SQL> 	     /* Suppliers2 */
+SQL> 
+SQL> insert into unitprice values ('S2','P1','1.1', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S2','P2','2.1', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S2','P3','3.1', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S2','P4','4.1', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S2','P5','5.1', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S2','P6','6.1', null, null);
+
+1 row created.
+
+SQL> 
+SQL> 	     /* Suppliers3 */
+SQL> 
+SQL> insert into unitprice values ('S3','P1','1.2', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S3','P2','2.2', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S3','P3','3.2', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S3','P4','4.2', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S3','P5','5.2', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S3','P6','6.2', null, null);
+
+1 row created.
+
+SQL> 
+SQL> 	      /* Suppliers4 */
+SQL> 
+SQL> insert into unitprice values ('S4','P1','1.3', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S4','P2','2.3', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S4','P3','3.3', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S4','P4','4.3', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S4','P5','5.3', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S4','P6','6.3', null, null);
+
+1 row created.
+
+SQL> 
+SQL> 	     /* Suppliers5 */
+SQL> 
+SQL> insert into unitprice values ('S5','P1','1.4', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S5','P2','2.4', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S5','P3','3.4', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S5','P4','4.4', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S5','P5','5.4', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S5','P6','6.4', null, null);
+
+1 row created.
+
+SQL> 
+SQL> 	     /* Suppliers6 */
+SQL> 
+SQL> insert into unitprice values ('S6','P1','1.5', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S6','P2','2.5', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S6','P3','3.5', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S6','P4','4.5', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S6','P5','5.5', null, null);
+
+1 row created.
+
+SQL> 
+SQL> insert into unitprice values ('S6','P6','6.5', null, null);
+
+1 row created.
+
+SQL> 
+SQL> 	  /*  Orders  */
+SQL> 
+SQL> insert into orders values ('1000','1-may-18','open','P1','S1',10, 1.0,'10','2-may-18','10','9','10.00');
+
+1 row created.
+
+SQL> 
+SQL> 
+SQL> insert into orders values ('1001','4-may-2018' ,'open','P1','S2',10, 1.1,'10','5-may-2018','10','9','11.00');
+
+1 row created.
+
+SQL> 
+SQL> 
+SQL> insert into orders values ('1002','6-may-18','open','P1','S3',10, 1.2,'10','7-may-18','10','9','12.00');
+
+1 row created.
+
+SQL> 
+SQL> 
+SQL> insert into orders values ('1003','8-may-18','open','P1','S4',10, 1.3,'10','9-may-18','10','9','13.00');
+
+1 row created.
+
+SQL> 
+SQL> 
+SQL> insert into orders values ('1004','10-may-18' ,'open','P1','S5',10, 1.4,'10','11-may-18','10','9','14.00');
+
+1 row created.
+
+SQL> 
+SQL> 
+SQL> insert into orders values ('1005','12-may-18','closed','P1','S6',10, 1.5,'10','12-may-18','10','10','15.00');
+
+1 row created.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL>  /* Describe Tables */
+SQL> 
+SQL> describe suppliers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SNUM                                      NOT NULL VARCHAR2(2)
+ SNAME                                              VARCHAR2(20)
+ SADRESS                                            VARCHAR2(15)
+ SCITY                                              VARCHAR2(15)
+ SSTATE                                             VARCHAR2(15)
+ SZIP                                               CHAR(5)
+ SPHONE                                             CHAR(10)
+
+SQL> describe products;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PNUM                                      NOT NULL VARCHAR2(2)
+ PNAME                                              VARCHAR2(20)
+ PQTY                                               VARCHAR2(5)
+
+SQL> describe unitprice;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SNUM                                      NOT NULL VARCHAR2(2)
+ PNUM                                      NOT NULL VARCHAR2(2)
+ UNITPRICE                                          NUMBER(6,2)
+ AMOUNTDUE                                          VARCHAR2(5)
+ TORDER                                             VARCHAR2(5)
+
+SQL> describe orders;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ONUM                                      NOT NULL VARCHAR2(10)
+ ODATE                                              DATE
+ OSTATUS                                            VARCHAR2(6)
+ PNUM                                               VARCHAR2(2)
+ SNUM                                               VARCHAR2(2)
+ OQTY                                               NUMBER(6,2)
+ UNITPRICE                                          NUMBER(6,2)
+ OAMOUNT                                            VARCHAR2(15)
+ SDATE                                              DATE
+ SQTY                                               VARCHAR2(5)
+ RQTY                                               VARCHAR2(5)
+ SAMOUNT                                            VARCHAR2(15)
+
+SQL> describe counter;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ MAXNUM                                             NUMBER(4)
+
+SQL> 
+SQL>  /* Select Tables */
+SQL> 
+SQL> select * from suppliers;
+
+SN SNAME                SADRESS         SCITY           SSTATE          SZIP    
+-- -------------------- --------------- --------------- --------------- -----   
+SPHONE                                                                          
+----------                                                                      
+S1 Staples              123 Main st.    San Jose        CA              95070   
+4088210001                                                                      
+                                                                                
+S2 Office Depo          120 Union dr.   Campbell        CA              98003   
+4088210002                                                                      
+                                                                                
+S3 Dunder-Mifflin       223 Polard ave. Los Gatos       CA              98051   
+4088210003                                                                      
+                                                                                
+
+SN SNAME                SADRESS         SCITY           SSTATE          SZIP    
+-- -------------------- --------------- --------------- --------------- -----   
+SPHONE                                                                          
+----------                                                                      
+S4 PaperCo              13500 Quito rd. Saratoga        CA              95070   
+4088210004                                                                      
+                                                                                
+S5 Office Supplies      100 Beach dr.   Santa Cruz      CA              90002   
+4088210005                                                                      
+                                                                                
+S6 BuyLarge             560 West dr.    Morgan Hill     CA              98002   
+4088210006                                                                      
+                                                                                
+
+6 rows selected.
+
+SQL> select * from products;
+
+Prod            Product                                                         
+No              Name            PQTY                                            
+--------------- --------------- -----                                           
+P1              Paper           10                                              
+P2              Pen             10                                              
+P3              tape            10                                              
+P4              folder          10                                              
+P5              pencil          10                                              
+P6              staples         10                                              
+
+6 rows selected.
+
+SQL> select * from unitprice;
+
+   Prod                                                                         
+SN No               UNITPRICE AMOUN TORDE                                       
+-- --------------- ---------- ----- -----                                       
+S1 P1                       1                                                   
+S1 P2                       2                                                   
+S1 P3                       3                                                   
+S1 P4                       4                                                   
+S1 P5                       5                                                   
+S1 P6                       6                                                   
+S2 P1                     1.1                                                   
+S2 P2                     2.1                                                   
+S2 P3                     3.1                                                   
+S2 P4                     4.1                                                   
+
+   Prod                                                                         
+SN No               UNITPRICE AMOUN TORDE                                       
+-- --------------- ---------- ----- -----                                       
+S2 P5                     5.1                                                   
+S2 P6                     6.1                                                   
+S3 P1                     1.2                                                   
+S3 P2                     2.2                                                   
+S3 P3                     3.2                                                   
+S3 P4                     4.2                                                   
+S3 P5                     5.2                                                   
+S3 P6                     6.2                                                   
+S4 P1                     1.3                                                   
+S4 P2                     2.3                                                   
+
+   Prod                                                                         
+SN No               UNITPRICE AMOUN TORDE                                       
+-- --------------- ---------- ----- -----                                       
+S4 P3                     3.3                                                   
+S4 P4                     4.3                                                   
+S4 P5                     5.3                                                   
+S4 P6                     6.3                                                   
+S5 P1                     1.4                                                   
+S5 P2                     2.4                                                   
+S5 P3                     3.4                                                   
+S5 P4                     4.4                                                   
+S5 P5                     5.4                                                   
+S5 P6                     6.4                                                   
+
+   Prod                                                                         
+SN No               UNITPRICE AMOUN TORDE                                       
+-- --------------- ---------- ----- -----                                       
+S6 P1                     1.5                                                   
+S6 P2                     2.5                                                   
+S6 P3                     3.5                                                   
+S6 P4                     4.5                                                   
+S6 P5                     5.5                                                   
+S6 P6                     6.5                                                   
+
+36 rows selected.
+
+SQL> select * from orders;
+
+                            Prod                                                
+ONUM       ODATE     OSTATU No              SN       OQTY  UNITPRICE            
+---------- --------- ------ --------------- -- ---------- ----------            
+OAMOUNT         SDATE     SQTY  RQTY  SAMOUNT                                   
+--------------- --------- ----- ----- ---------------                           
+1000       01-MAY-18 open   P1              S1         10          1            
+10              02-MAY-18 10    9     10.00                                     
+                                                                                
+1001       04-MAY-18 open   P1              S2         10        1.1            
+10              05-MAY-18 10    9     11.00                                     
+                                                                                
+1002       06-MAY-18 open   P1              S3         10        1.2            
+10              07-MAY-18 10    9     12.00                                     
+
+                            Prod                                                
+ONUM       ODATE     OSTATU No              SN       OQTY  UNITPRICE            
+---------- --------- ------ --------------- -- ---------- ----------            
+OAMOUNT         SDATE     SQTY  RQTY  SAMOUNT                                   
+--------------- --------- ----- ----- ---------------                           
+                                                                                
+1003       08-MAY-18 open   P1              S4         10        1.3            
+10              09-MAY-18 10    9     13.00                                     
+                                                                                
+1004       10-MAY-18 open   P1              S5         10        1.4            
+10              11-MAY-18 10    9     14.00                                     
+                                                                                
+1005       12-MAY-18 closed P1              S6         10        1.5            
+
+                            Prod                                                
+ONUM       ODATE     OSTATU No              SN       OQTY  UNITPRICE            
+---------- --------- ------ --------------- -- ---------- ----------            
+OAMOUNT         SDATE     SQTY  RQTY  SAMOUNT                                   
+--------------- --------- ----- ----- ---------------                           
+10              12-MAY-18 10    10    15.00                                     
+                                                                                
+
+6 rows selected.
+
+SQL> select * from counter;
+
+    MAXNUM                                                                      
+----------                                                                      
+      1000                                                                      
+
+SQL> 
+SQL> 
+SQL> spool off
