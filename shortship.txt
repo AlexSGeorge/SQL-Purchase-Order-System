@@ -1,0 +1,41 @@
+****** SHORT SHIP REPORT ******
+
+
+PO         PO         Pr Prod                 Short Recie                       
+Numb       Status     Nu Description            qty Qty    OQTY-RQTY SNUM       
+---------- ---------- -- -------------------- ----- ----- ---------- ----       
+SNAME                                                                           
+----------                                                                      
+1000       Close      P1 Paper                   10 10             0 S1         
+Staples                                                                         
+                                                                                
+1001       open       P1 Paper                   10 9              1 S2         
+Office Dep                                                                      
+o                                                                               
+                                                                                
+1005       closed     P1 Paper                   10 10             0 S6         
+
+PO         PO         Pr Prod                 Short Recie                       
+Numb       Status     Nu Description            qty Qty    OQTY-RQTY SNUM       
+---------- ---------- -- -------------------- ----- ----- ---------- ----       
+SNAME                                                                           
+----------                                                                      
+BuyLarge                                                                        
+                                                                                
+1003       open       P1 Paper                   10 9              1 S4         
+PaperCo                                                                         
+                                                                                
+1004       open       P1 Paper                   10 9              1 S5         
+Office Sup                                                                      
+plies                                                                           
+
+PO         PO         Pr Prod                 Short Recie                       
+Numb       Status     Nu Description            qty Qty    OQTY-RQTY SNUM       
+---------- ---------- -- -------------------- ----- ----- ---------- ----       
+SNAME                                                                           
+----------                                                                      
+                                                                                
+1002       open       P1 Paper                   10 9              1 S3         
+Dunder-Mif                                                                      
+flin                                                                            
+                                                                                

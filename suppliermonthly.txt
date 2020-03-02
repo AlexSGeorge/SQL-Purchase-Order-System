@@ -1,0 +1,12 @@
+***** SUPPLIER MONTHLY REPORT *****
+
+
+Su Suppliers                 Order            No of       Total       Total     
+Nu Name                      Month           Orders       Units      Amount     
+-- ------------------------- --------------- ------ ----------- -----------     
+S4 PaperCo                   05/2018              1      $10.00      $10.00     
+S5 Office Supplies           05/2018              1      $10.00      $10.00     
+S6 BuyLarge                  05/2018              1      $10.00      $10.00     
+S2 Office Depo               05/2018              1      $10.00      $10.00     
+S1 Staples                   05/2018              1      $10.00      $10.00     
+S3 Dunder-Mifflin            05/2018              1      $10.00      $10.00     

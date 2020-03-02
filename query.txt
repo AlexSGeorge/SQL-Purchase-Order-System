@@ -1,0 +1,42 @@
+****** Q U E R Y   O R D E R ******
+
+
+Today's Date: 11-MAY-18                                                         
+
+Please enter the Purchase Order number:1000
+
+
+
+Purchase Order Number: 1000                                                     
+
+Item Number: P1                                                                 
+
+Item Description: Paper                                                         
+
+Current Inventory 10                                                            
+
+Supplier Number S1                                                              
+
+Supplier Name: Staples                                                          
+
+
+
+Date Ordered: 01-MAY-18                                                         
+
+Quantity Ordered: 10                                                            
+
+Date Recieved: 10                                                               
+
+Unit Price $1                                                                   
+
+Amount Ordered:         10                                                      
+
+Amount Due:     $10.00                                                          
+
+
+
+Date Closed: 11-MAY-18                                                          
+SQL> clear screen
+SQL> start d:aging.sql
+SP2-0310: unable to open file "d:\aging.sql"
+SQL> start d:agingalex.sql
